@@ -32,10 +32,6 @@ This project demonstrates MOSFET identification using a simple LED-based testing
 | S1 | Slide Switch |
 | S2 | Push Button |
 
-## 🔌 Circuit Diagram and Working
-
-![Digital MOSFET Tester](circuit/digital-mosfet-tester.png)
-
 ## 🧠 Working Principle
 
 The tester uses a mode-selection switch to select the intended MOSFET test mode. The MOSFET under test is inserted into the test socket with the correct Gate, Drain, and Source orientation. When the test button is pressed, a gate voltage is applied and the LEDs provide a visual indication of the resulting switching behavior.
