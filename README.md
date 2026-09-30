@@ -1,73 +1,234 @@
+<div align="center">
+
 # 🔌 Digital MOSFET Tester
 
-A simple and practical circuit designed to identify and test N-Channel and P-Channel MOSFETs and observe their switching behavior.
+### A Compact Hardware Tool for MOSFET Identification & Switching Tests
 
-## 📌 Overview
+**N-Channel · P-Channel · Gate Control · Switching Behaviour**
 
-MOSFETs are widely used as electronic switches in applications such as SMPS, motor drivers, battery management systems, DC-DC converters, and embedded systems.
+<br>
 
-Correctly identifying the MOSFET type and its Gate, Drain, and Source terminals is essential before integrating a device into a circuit.
+<a href="https://github.com/parcosm04/Digital-MOSFET-Tester">
+<img src="https://img.shields.io/badge/GITHUB-111827?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
 
-This project demonstrates MOSFET identification using a simple LED-based testing circuit rather than relying on complex measurement instruments.
+<img src="https://img.shields.io/badge/HARDWARE-FFB000?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/MOSFET-7C3AED?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/ELECTRONICS-00E5FF?style=for-the-badge"/>
 
-## 🎯 Objectives
+</div>
 
-- Identify N-Channel and P-Channel MOSFETs
-- Verify MOSFET switching behavior
-- Demonstrate the effect of gate voltage on MOSFET operation
-- Reduce incorrect MOSFET connections
-- Develop practical understanding of MOSFET operation
+---
 
-## ⚙️ Components Used
+## ⚡ Project Overview
 
-| Component | Value / Part |
-|---|---|
-| Battery | 9V |
-| MOSFET | 2N7000 |
-| LED 1 | Green LED |
-| LED 2 | Red LED |
-| R1 | 220Ω |
-| R2 | 1kΩ |
-| R3 | 10kΩ |
-| S1 | Slide Switch |
-| S2 | Push Button |
+The **Digital MOSFET Tester** is a compact hardware circuit designed to test and identify **N-Channel and P-Channel MOSFETs** while demonstrating their switching behaviour.
 
-## 🧠 Working Principle
+Instead of relying on laboratory instruments, the tester uses **gate control and LED-based visual indications** to determine the response of the device under test.
 
-The tester uses a mode-selection switch to select the intended MOSFET test mode. The MOSFET under test is inserted into the test socket with the correct Gate, Drain, and Source orientation. When the test button is pressed, a gate voltage is applied and the LEDs provide a visual indication of the resulting switching behavior.
+The project focuses on understanding the practical behaviour of MOSFETs as **voltage-controlled electronic switches**.
 
-The infographic included in this repository summarizes the circuit, components, working sequence, LED indications, and key learnings.
+---
 
-## 📊 Test Indications
+## 🧠 What It Tests
 
-- **N-Channel mode:** Green LED indicates an N-Channel MOSFET detected; red LED indicates a wrong device or connection.
-- **P-Channel mode:** Red LED indicates a P-Channel MOSFET detected; green LED indicates a wrong device or connection.
-- **Without pressing the test button:** both LEDs may indicate a shorted or faulty device.
+<div align="center">
 
-## 💡 Key Learnings
+| Test | Purpose |
+|:---|:---|
+| 🔀 **MOSFET Type** | N-Channel / P-Channel identification |
+| ⚡ **Gate Control** | Applies the required gate condition |
+| 💡 **Switching** | Observes ON/OFF behaviour |
+| 🔴🟢 **LED Indication** | Provides visual test feedback |
+| 🔌 **Pin Orientation** | Helps verify correct G-D-S connection |
 
-- MOSFET switching behavior and gate control
-- N-Channel vs P-Channel MOSFET operation
-- Identifying Gate, Drain and Source terminals
-- Practical circuit debugging and component testing
-- Connecting semiconductor devices correctly before use
+</div>
 
-## 🚀 Future Improvements
+---
 
-- Support for a wider range of MOSFETs
-- Automatic MOSFET type detection
-- Digital display for test results
-- MOSFET threshold / electrical parameter measurement
-- Microcontroller-based testing
-- Dedicated PCB implementation
+## ⚙️ Working Principle
 
-## 👨‍💻 Contributors
+The MOSFET under test is inserted into the tester with its **Gate, Drain and Source** terminals correctly oriented.
 
-**Pankaj Pandit** — Electronics & Telecommunication Engineering  
-**Harshwardhan Chitte** — Project collaborator
+A mode-selection switch determines the intended test configuration.
 
-This project was developed collaboratively for practical learning and demonstration of MOSFET operation.
+When the test button is pressed:
 
-## 📜 License
+```text
+        MODE SELECT
+             │
+             ▼
+      ┌─────────────┐
+      │ MOSFET DUT  │
+      │  G  D  S    │
+      └──────┬──────┘
+             │
+       Gate Control
+             │
+             ▼
+       Switching State
+             │
+             ▼
+        LED Indication
+````
 
-This project is intended for educational purposes.
+The LEDs provide a simple visual indication of the resulting switching behaviour.
+
+---
+
+## 🔬 Test Logic
+
+### N-Channel Mode
+
+```text
+Correct N-MOSFET
+      ↓
+Gate condition applied
+      ↓
+MOSFET switches
+      ↓
+🟢 Green LED
+```
+
+A red indication can represent an incorrect device or connection.
+
+### P-Channel Mode
+
+```text
+Correct P-MOSFET
+      ↓
+Gate condition applied
+      ↓
+MOSFET switches
+      ↓
+🔴 Red LED
+```
+
+A green indication can represent an incorrect device or connection.
+
+The LED behaviour therefore provides a quick hardware-level indication without requiring a dedicated measurement instrument.
+
+---
+
+## 🧩 Hardware
+
+<div align="center">
+
+| Component  | Specification |
+| :--------- | :-----------: |
+| 🔋 Battery |      `9V`     |
+| 🔌 MOSFET  |    `2N7000`   |
+| 🟢 LED 1   |     Green     |
+| 🔴 LED 2   |      Red      |
+| R1         |     `220Ω`    |
+| R2         |     `1kΩ`     |
+| R3         |     `10kΩ`    |
+| S1         |  Slide Switch |
+| S2         |  Push Button  |
+
+</div>
+
+---
+
+## 🔌 Circuit Concept
+
+The circuit combines:
+
+```text
+        9V SUPPLY
+            │
+            ▼
+     ┌──────────────┐
+     │ MODE SELECT  │
+     └──────┬───────┘
+            │
+            ▼
+     ┌──────────────┐
+     │ MOSFET DUT   │
+     └──────┬───────┘
+            │
+       GATE CONTROL
+            │
+            ▼
+     ┌──────────────┐
+     │ LED OUTPUT   │
+     └──────────────┘
+```
+
+The design demonstrates how **gate voltage controls MOSFET conduction**, translating the electrical behaviour into an easily observable visual output.
+
+---
+
+## 🛠️ Engineering Concepts
+
+<div align="center">
+
+`MOSFET Switching` · `Gate Control` · `N-Channel` · `P-Channel`
+
+`Voltage-Controlled Devices` · `Pull-Up / Pull-Down` · `Current Limiting`
+
+`Hardware Testing` · `Circuit Debugging` · `Component Identification`
+
+</div>
+
+---
+
+## 💡 Key Learning
+
+This project provided practical understanding of:
+
+* MOSFET as a switching device
+* Difference between N-Channel and P-Channel operation
+* Gate, Drain and Source identification
+* Gate-voltage-dependent switching
+* LED-based hardware indication
+* Resistor selection for current limiting and gate biasing
+* Practical component testing and circuit debugging
+
+---
+
+## 🚀 Future Development
+
+The current design can be extended into a more advanced semiconductor testing platform.
+
+```text
+Current Tester
+      │
+      ├── Automatic MOSFET Detection
+      ├── Wider MOSFET Compatibility
+      ├── Digital Result Display
+      ├── Threshold Voltage Measurement
+      ├── Electrical Parameter Testing
+      ├── Microcontroller Integration
+      └── Dedicated PCB
+```
+
+Potential future measurements include:
+
+`VGS(th)` · `RDS(on)` · `Gate Response` · `Switching Behaviour`
+
+---
+
+## 👥 Contributors
+
+**Pankaj Pandit**
+Electronics & Telecommunication Engineering
+
+**Harshwardhan Chitte**
+Project Collaborator
+
+Developed as a practical electronics project to explore **MOSFET operation, switching circuits, and hardware testing**.
+
+---
+
+<div align="center">
+
+### ⚡ TEST. SWITCH. UNDERSTAND.
+
+`Hardware` · `MOSFETs` · `Digital Electronics` · `Circuit Testing`
+
+<br>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00E5FF,50:7C3AED,100:FFB000&height=100&section=footer"/>
+
+</div>
